@@ -12,20 +12,20 @@ jobs:
 
     steps:
       
-name: Checkout du code
-      uses: actions/checkout@v3  # Utilisation de l'action GitHub pour récupérer le code du dépôt
+      - name: Checkout du code
+        uses: actions/checkout@v3  # Utilisation de l'action GitHub pour récupérer le code du dépôt
 
       
-name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'  # Version Java à utiliser
-        distribution: 'adopt'  # Distribution d'AdoptOpenJDK
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'  # Version Java à utiliser
+          distribution: 'adopt'  # Distribution d'AdoptOpenJDK
 
       
-name: Build du projet
-      run: ./gradlew build
+      - name: Build du projet
+        run: ./gradlew build
 
       
-name: Exécuter les tests
-      run: ./gradlew test
+      - name: Exécuter les tests
+        run: ./gradlew test

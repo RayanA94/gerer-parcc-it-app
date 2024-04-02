@@ -2,7 +2,7 @@ name: "Workflow principal de CI/CD"
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
@@ -11,23 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
       - name: Checkout du code
         uses: actions/checkout@v3  # Utilisation de l'action GitHub pour récupérer le code du dépôt
 
-      
+      - name: Set execute permission for gradlew
+        run: chmod +x ./gradlew
+
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'  # Version Java à utiliser
           distribution: 'adopt'  # Distribution d'AdoptOpenJDK
 
-      
       - name: Build du projet
         run: ./gradlew build
 
-      
       - name: Exécuter les tests
         run: ./gradlew test
-      
-      # test
